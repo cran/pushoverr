@@ -1,0 +1,25 @@
+\docType{methods}
+\name{is.success,PushoverResponse-method}
+\alias{is.success}
+\alias{is.success,PushoverResponse-method}
+\title{Return whether a PushoverResponse indicated success (\code{TRUE}) or not
+(\code{FALSE})}
+\usage{
+\S4method{is.success}{PushoverResponse}(object)
+}
+\arguments{
+  \item{object}{A \code{\link{PushoverResponse-class}}
+  object}
+}
+\value{
+Whether the query was a success (\code{TRUE}) or not
+(\code{FALSE}
+}
+\description{
+Return whether a PushoverResponse indicated success
+(\code{TRUE}) or not (\code{FALSE})
+}
+\seealso{
+\code{\link{status}}
+}
+

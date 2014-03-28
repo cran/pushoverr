@@ -1,0 +1,31 @@
+\docType{methods}
+\name{send,PushoverMessage-method}
+\alias{send}
+\alias{send,PushoverMessage-method}
+\title{Send a Pushover message}
+\usage{
+\S4method{send}{PushoverMessage}(object)
+}
+\arguments{
+  \item{object}{A \code{\link{PushoverMessage-class}}
+  object}
+}
+\value{
+A \code{\link{PushoverResponse}} object containing
+information about the server's response.
+}
+\description{
+\code{send} sends the given Pushover message (represented
+by a \code{\link{PushoverMessage-class}}) object
+}
+\examples{
+\dontrun{
+library(pushoverr)
+
+message <- PushoverMessage(message='Hello World',
+                           token='KzGDORePK8gMaC0QOYAMyEEuzJnyUi',
+                           user='uQiRzpo4DXghDmr9QzzfQu27cmVRsG')
+response <- send(message)
+}
+}
+

@@ -1,0 +1,18 @@
+\docType{data}
+\name{pushover_priorities}
+\alias{pushover_priorities}
+\title{List of the priorities available and their descriptions}
+\format{\preformatted{List of 4
+ $ -1: chr "quiet"
+ $ 0 : chr "normal"
+ $ 1 : chr "high"
+ $ 2 : chr "emergency"
+}}
+\usage{
+pushover_priorities
+}
+\description{
+List of the priorities available and their descriptions
+}
+\keyword{datasets}
+

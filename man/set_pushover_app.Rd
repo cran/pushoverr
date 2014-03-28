@@ -1,0 +1,121 @@
+\name{set_pushover_app}
+\alias{get_pushover_app}
+\alias{get_pushover_user}
+\alias{pushover_app.isset}
+\alias{pushover_user.isset}
+\alias{set_pushover_app}
+\alias{set_pushover_user}
+\alias{unset_pushover_app}
+\alias{unset_pushover_user}
+\title{Store Pushover app and user information and use for all subsequent queries}
+\usage{
+set_pushover_app(token, user = NA)
+
+pushover_app.isset()
+
+unset_pushover_app()
+
+get_pushover_app()
+
+set_pushover_user(user)
+
+pushover_user.isset()
+
+unset_pushover_user()
+
+get_pushover_user()
+}
+\arguments{
+  \item{token}{The application token}
+
+  \item{user}{If a user/group key is given, that
+  information will also be saved for subsequent queries.
+  This is eqivalant to calling
+  \code{\link{set_pushover_user}}.}
+}
+\value{
+\code{pushover_app.isset} returns a boolean indicating
+whether the app token has been set (\code{TRUE}) or not
+(\code{FALSE}).
+
+\code{get_pushover_app} returns a string representing the
+token associated with the current app (if one is set)
+
+\code{pushover_user.isset} returns boolean indicating
+whether the user/group is set (\code{TRUE}) or not
+(\code{FALSE}).
+
+\code{get_pushover_user} returns a string containing a
+Pushover user/group key
+}
+\description{
+\code{set_pushover_app} allows an application token to be
+stored that will be used for all subsequent calls that
+require a token (e.g., \code{\link{pushover}}).
+
+\code{pushover_app.isset} determines whether or not a
+Pushover app has been set
+
+\code{unset_pushover_app} removes a stored Pushover app
+token, which means that a token will have to be provided to
+all subsequent API calls.
+
+\code{get_pushover_app} returns the token associated with
+the current Pushover app
+
+\code{set_pushover_user} allows a user key to be stored
+that will be used for all subsequent calls that require a
+user key (e.g., \code{\link{pushover}}).
+
+\code{pushover_user.isset} indicates whether or not a
+Pushover user/group is currently set
+
+\code{unset_pushover_user} removes a stored Pushover
+user/group, which means that a key will have to be provided
+to all subsequent API calls.
+
+\code{get_pushover_user} gets the key associated with the
+current Pushover user/group
+}
+\note{
+This behavior can temporarily be overridden by providing an
+app token or user key as argument to the function in
+question.
+
+The Pushover API calls don't differentiate between users
+and groups (and therefore neither does \code{pushoverr}).
+This function will remove any user or group key that is
+saved.
+}
+\examples{
+\dontrun{
+# Set the Pushover user account to use
+set_pushover_app('KzGDORePK8gMaC0QOYAMyEEuzJnyUi')
+
+# Determine whether the Pushover user account has been set
+if(pushover_app.isset())
+{
+    cat(paste('The Pushover app token has been set to', get_pushover_app()))
+}
+}
+\dontrun{
+# Set the Pushover user account to use
+set_pushover_user('uQiRzpo4DXghDmr9QzzfQu27cmVRsG')
+
+# Determine whether the Pushover user account has been set
+if(pushover_user.isset())
+{
+    cat(paste('Pushover user has been set to', get_pushover_user()))
+}
+
+When both the app token and user account have been set, we can send a
+message without providing either of them:
+pushover('this took so much less typing!')
+pushover_high('and again!')
+}
+\dontrun{
+# Forget about the current Pushover user
+unset_pushover_user()
+}
+}
+

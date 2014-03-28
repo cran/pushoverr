@@ -1,0 +1,46 @@
+\name{PushoverResponse}
+\alias{PushoverResponse}
+\title{Create a PushoverResponse to store a Pushover server response}
+\usage{
+PushoverResponse(status = NA_integer_, request = NA_character_,
+  status_code = NA_integer_, headers = NA, content = NA)
+}
+\arguments{
+  \item{status}{The status response from Pushover 1=good,
+  0=problem}
+
+  \item{request}{The unique identifier associated with the
+  message}
+
+  \item{status_code}{The HTTP status code returned}
+
+  \item{headers}{A list containing the headers in the HTTP
+  response}
+
+  \item{content}{A list containing the content from the
+  response. This will vary depending on the type of query
+  sent to the server.}
+}
+\description{
+The \code{PushoverResponse} function is a constructor that
+creates \code{\link{PushoverResponse-class}} objects. These
+objects store information from responses to Pushover
+queries
+}
+\examples{
+\dontrun{
+library(pushoverr)
+
+# Create PushoverResponse object
+response <- POST(url="https://api.pushover.net:443/1/messages.json",
+                 body=params)
+response <- PushoverResponse(status=1,
+                             request='8345bfe5fbd7d346028f2863de77c8c4',
+                             status_code=200,cheaders=resp$headers,
+                             content=content(rsp))
+}
+}
+\seealso{
+\code{\link{PushoverResponse-class}}
+}
+

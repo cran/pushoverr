@@ -1,0 +1,67 @@
+\docType{class}
+\name{PushoverMessage-class}
+\alias{PushoverMessage-class}
+\title{The \code{PushoverMessage} class}
+\description{
+\code{PushoverMessage} objects represent a Pushover message
+and implements all of the features available in Pushover's
+API (\url{https://pushover.net/api}).
+\code{PushoverMessage} objects are used to build queries
+that are sent to Pushover's servers.
+}
+\section{Slots}{
+
+\describe{
+\item{\code{message}}{The message to be sent (max. 512 characters)}
+
+\item{\code{token}}{The application token}
+
+\item{\code{user}}{The user or group key to send the message to}
+
+\item{\code{device}}{The device to send the notification to (optional)}
+
+\item{\code{title}}{The title of the message (optional)}
+
+\item{\code{url}}{A URL to be included in the message (optional, max. 512 characters)}
+
+\item{\code{url_title}}{A title for the given url (optional, max. 100 characters)}
+
+\item{\code{priority}}{The message's priority. One of: -1 (quiet), 0
+(normal, default), 1 (high), 2 (emergency). Quiet messages do not play a
+sound. Emergency messages require acknowledgement.}
+
+\item{\code{timestamp}}{The time to associate with the message (default: now, format:
+UNIX time)}
+
+\item{\code{sound}}{The sound to be played when the message is received (see
+\code{\link{get_pushover_sounds}})}
+
+\item{\code{callback}}{A callback URL. For emergency priority, a POST request will be
+sent to this URL when the message is acknowledged (see
+\url{https://pushover.net/api#receipt})}
+
+\item{\code{retry}}{The number of seconds between re-sending of an unacknowledged
+emergency message (default: 60, min: 30)}
+
+\item{\code{expire}}{The number of seconds until an unacknowledged emergency message
+will stop being resent (default: 3600, max: 86400).}
+}}
+\note{
+\code{PushoverMessage} objects are created with the
+\code{\link{PushoverMessage}} constructor (see Examples
+below).
+}
+\examples{
+\dontrun{
+library(pushoverr)
+
+# Create a PushoverMessage
+m1 <- PushoverMessage(message='Hi there',
+                      token='KzGDORePK8gMaC0QOYAMyEEuzJnyUi',
+                      user='KAWXTswy4cekx6vZbHBKbCKk1c1fdf')
+}
+}
+\seealso{
+\code{\link{PushoverMessage}}
+}
+

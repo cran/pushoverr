@@ -1,0 +1,25 @@
+\name{is.valid_device}
+\alias{is.valid_device}
+\title{Determine whether or not a given device name is valid}
+\usage{
+is.valid_device(device)
+}
+\arguments{
+  \item{device}{A device name (e.g., 'phone')}
+}
+\value{
+A boolean value indicating if the device name is valid
+(\code{TRUE}) or not (\code{FALSE})
+}
+\description{
+\code{is.valid_device} determines whether or not a given
+device name is valid or not according to Pushover's
+specifications. It does not determine whether or not the
+given device is registered to a user.
+}
+\examples{
+\dontrun{
+is.valid_device(device='phone')
+}
+}
+

@@ -1,0 +1,58 @@
+\name{validate_key}
+\alias{is.valid_key}
+\alias{validate_key}
+\title{Determine whether or not a given user/group key is valid}
+\usage{
+validate_key(user, device = NA_character_, ...)
+
+is.valid_key(user, device = NA, ...)
+}
+\arguments{
+  \item{user}{A user or group key (e.g.,
+  'uQiRzpo4DXghDmr9QzzfQu27cmVRsG')}
+
+  \item{device}{A device name (e.g., 'phone')}
+
+  \item{...}{Any additional parameters, such as an
+  application \code{token} \code{\link{set_pushover_app}}.}
+}
+\value{
+\code{validate_key} returns a
+\code{\link{PushoverResponse}} object containing the
+response from the server
+
+\code{is.valid_key} returns a boolean value indicating
+whether the user/device is valid (\code{TRUE}) or not
+(\code{FALSE}).
+}
+\description{
+\code{validate_key} issues a query to Pushover to determine
+whether or not a given user (or group) key is valid. If a
+\code{device} is specified, the query will also see if the
+given device is registered to that user.
+
+\code{is.valid_key} returns a boolean value indicating
+whether the user/device is valid (\code{TRUE}) or not
+(\code{FALSE}).
+}
+\note{
+To acquire a user key, create an account at
+\url{https://pushover.net}
+}
+\examples{
+\dontrun{
+response <- validate_key(token='KzGDORePK8gMaC0QOYAMyEEuzJnyU',
+                         user='uQiRzpo4DXghDmr9QzzfQu27cmVRsG')
+response_dev <- validate_key(token='KzGDORePK8gMaC0QOYAMyEEuzJnyU',
+                             user='uQiRzpo4DXghDmr9QzzfQu27cmVRsG',
+                             device='phone')
+
+if(is.valid_key(token='KzGDORePK8gMaC0QOYAMyEEuzJnyU',
+                user='uQiRzpo4DXghDmr9QzzfQu27cmVRsG',
+                device='phone'))
+{
+     cat('I can send to this device!')
+}
+}
+}
+

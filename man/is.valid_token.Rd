@@ -1,0 +1,30 @@
+\name{is.valid_token}
+\alias{is.valid_token}
+\title{Determine whether or not a given API token is valid}
+\usage{
+is.valid_token(token)
+}
+\arguments{
+  \item{token}{A application token (e.g.,
+  'KzGDORePK8gMaC0QOYAMyEEuzJnyUi')}
+}
+\value{
+A boolean value indicating if the application token is
+valid (\code{TRUE}) or not (\code{FALSE})
+}
+\description{
+\code{is.valid_token} determines whether or not a given
+application token is valid or not according to Pushover's
+specifications. It does not determine whether or not the
+given token is associated with an application.
+}
+\note{
+To acquire an application token, register your token at
+\url{https://pushover.net/apps}
+}
+\examples{
+\dontrun{
+is.valid_token(token='KzGDORePK8gMaC0QOYAMyEEuzJnyU')
+}
+}
+

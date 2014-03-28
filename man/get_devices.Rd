@@ -1,0 +1,53 @@
+\name{get_devices}
+\alias{get_devices}
+\alias{is.device}
+\title{Get a list of the user's registered devices}
+\usage{
+get_devices(...)
+
+is.device(device, ...)
+}
+\arguments{
+  \item{...}{An app token and/or user key can be specified
+  with the \code{token} and \code{user} aguments,
+  respectively}
+
+  \item{device}{A device name (e.g., 'phone')}
+}
+\value{
+\code{get_devices} returns a vector of device names
+
+\code{is.device} returns a boolean value indicating if the
+device is registered (\code{TRUE}) or not (\code{FALSE})
+}
+\description{
+\code{get_devices} queries Pushover to receive a list of
+the devices given by the user (specified by their user key)
+
+\code{is.device} determines whether or not a given device
+name is registered to the given user (specified by their
+user key)
+}
+\note{
+The token and user arguments are necessary, however they do
+not need to be given if they have been set with
+\code{\link{set_pushover_user}} and
+\code{\link{set_pushover_app}}, respectively.
+
+The token and user arguments are necessary, however they do
+not need to be given if they have been set with
+\code{\link{set_pushover_user}} and
+\code{\link{set_pushover_app}}, respectively.
+}
+\examples{
+\dontrun{
+available_devs <- get_devices(token='KzGDORePK8gMaC0QOYAMyEEuzJnyUi',
+                              user='uQiRzpo4DXghDmr9QzzfQu27cmVRsG')
+}
+\dontrun{
+is.device(device='phone',
+          token='KzGDORePK8gMaC0QOYAMyEEuzJnyUi',
+          user='uQiRzpo4DXghDmr9QzzfQu27cmVRsG')
+}
+}
+

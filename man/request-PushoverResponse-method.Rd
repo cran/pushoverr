@@ -1,0 +1,22 @@
+\docType{methods}
+\name{request,PushoverResponse-method}
+\alias{request}
+\alias{request,PushoverResponse-method}
+\title{Return the Pushover response request token}
+\usage{
+\S4method{request}{PushoverResponse}(object)
+}
+\arguments{
+  \item{object}{A \code{\link{PushoverResponse-class}}
+  object}
+}
+\value{
+The string request token included as response to a Pushover
+query
+}
+\description{
+Responses to Pushover queries include a unique request
+token. This method returns the request token for the given
+PushoverResponse object.
+}
+

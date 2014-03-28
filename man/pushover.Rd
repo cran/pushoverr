@@ -1,0 +1,59 @@
+\name{pushover}
+\alias{pushover}
+\alias{pushover_emergency}
+\alias{pushover_high}
+\alias{pushover_normal}
+\alias{pushover_quiet}
+\title{Send a message using Pushover}
+\usage{
+pushover(message, ...)
+}
+\arguments{
+  \item{message}{The message to be sent (max. 512
+  characters)}
+
+  \item{...}{Any additional message parameters (see
+  \code{\link{PushoverMessage-class}})}
+}
+\value{
+A list containing a Pushover request token and a receipt
+token for emergency priority messages
+}
+\description{
+\code{pushover} sends a message (push notification) to a
+user or group. Messages can be given different priorities,
+play different sounds, or require acknowledgments. A unique
+request token is returned. The \code{pushover_normal},
+\code{pushover_quiet}, \code{pushover_high}, and
+\code{pushover_emergency} functions send messages with
+those priorities.
+}
+\note{
+Pushover user/group keys and application tokens are requred
+for a message. They can either be specified as arguments or
+be set earlier with \code{\link{set_pushover_user}} and
+\code{\link{set_pushover_app}}, respectively.
+}
+\examples{
+\dontrun{
+# Send a pushover message
+pushover(message='Hello World!', token='KzGDORePK8gMaC0QOYAMyEEuzJnyUi',
+         user='uQiRzpo4DXghDmr9QzzfQu27cmVRsG')
+
+# User keys and app tokens can be set ahead of time
+set_pushover_user('KAWXTswy4cekx6vZbHBKbCKk1c1fdf')
+set_pushover_app('KzGDORePK8gMaC0QOYAMyEEuzJnyUi')
+pushover(message='so much less work!')
+
+# Send a message with high priority and a title
+pushover_high(message='The sky is falling', title='Alert')
+
+# Send an emergency message. Emergency messages will be re-sent until they
+# are acknowledged (in this case, every 60 seconds)
+pushover_emergency(message='TAXES ARE DUE AT MIDNIGHT!', retry=60)
+
+# Send a quiet message
+pushover_quiet(message='Pssst. Walk the dog when you wake up')
+}
+}
+

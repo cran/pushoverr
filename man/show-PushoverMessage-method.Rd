@@ -1,0 +1,20 @@
+\docType{methods}
+\name{show,PushoverMessage-method}
+\alias{show,PushoverMessage-method}
+\title{Print information about a PushoverMessage object}
+\usage{
+\S4method{show}{PushoverMessage}(object)
+}
+\arguments{
+  \item{object}{A \code{\link{PushoverMessage-class}}
+  object}
+}
+\description{
+\code{show_PushoverMessage} prints information about a
+given \code{PushoverMessage} object. This function is
+automatically called when a \code{PushoverMessage} object
+is referenced alone, when returned from a function and not
+stored, or when \code{\link{show}} is called with a
+\code{PushoverMessage} object.
+}
+
