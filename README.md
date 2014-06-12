@@ -15,29 +15,29 @@ have that, log in and [register an
 application](https://pushover.net/apps/build). You should now have two
 codes---a **user key** and an **API token/key**. These are what identify you
 and your app(s) to Pushover. You'll pass these along to pushoverr whenever you
-send a message.
+send a message. You'll also need the Pushover app for
+[iOS](https://pushover.net/clients/ios) or
+[Android](https://pushover.net/clients/android) (desktop notifications coming
+soon).
 
 
 ## Installation
 
-pushoverr has been submitted to CRAN, but has not yet been approved. Once that's been done, it'll be as
-easy as running:
+Installing pushoverr is as easy as running:
 
     install.packages('pushoverr')
-
-Until then, see below for notes on installing via GitHub.
 
 
 ### Latest and Greatest (Fingers Crossed) via GitHub
 
-If you like living on the edge, you can use
+If you like living on the edge (or need a previous version), you can use
 [devtools](http://cran.r-project.org/web/packages/devtools/index.html) to
 install the latest and greatest version of pushoverr from GitHub. To do so:
 
     library(devtools)
     install_github('briandconnelly/pushoverr')
 
-You'll also need to make sure that you have the the excellent
+You'll also need to make sure that you have the excellent
 [httr](http://cran.r-project.org/web/packages/httr/index.html) package, which
 makes working with web connections easy.  For an up-to-date R setup, this can
 be done by running `install.packages('httpr')`.
@@ -50,6 +50,7 @@ notifications. To begin using pushoverr, you'll need to first load the library.
 To do this, run:
 
     library(pushoverr)
+
     
 ### Example 1: Send Yourself A Message
 
@@ -73,7 +74,7 @@ acknowledged. `pushoverr` provides easy methods for sending these:
 
 Or more urgently:
 
-    pushover_emergency(message='The kittens are awake, and they're angry!', user=<YOUR USER KEY>, token=<YOUR APP TOKEN>)
+    pushover_emergency(message='The kittens are awake, and they are angry!', user=<YOUR USER KEY>, token=<YOUR APP TOKEN>)
 
 Emergency messages return a receipt token that can be checked with
 `is.acknowledged()` to see whether or not it has been acknowledged.
@@ -93,6 +94,18 @@ And to temporarily use a different app token or user:
     pushover('You can get with this (app)')
     pushover('Or you can get with that (app)', token=<OTHER APP TOKEN>)
 
+*Tip*: If you'll always be using the same user key and app token, you can add
+this step to your `Rprofile` file (see `?Startup`) so that it is done
+automatically each time R is started.
+
+
+### Example 4: Sending to a Specific Device
+
+If you have more than one device with Pushover, you can also send messages to a
+specific device:
+
+
+    pushover('If you pretend like this is important, you can walk out of the boring meeting', device='Phone')
 
 
 ## Feature Requests and Bug Reports
@@ -102,11 +115,13 @@ GitHub](https://github.com/briandconnelly/pushoverr/issues).
 
 ## Related Links
 * [Pushover](https://pushover.net)
-    * [Terms of Service](https://pushover.net/terms)
     * [FAQ](https://pushover.net/faq)
     * [API](https://pushover.net/api)
+    * [Terms of Service](https://pushover.net/terms)
 * [NotifyR](http://cran.r-project.org/web/packages/notifyR/index.html), an
 alternate Pushover tool for R
+* [CRAN Info for pushoverr](http://cran.r-project.org/web/packages/pushoverr/index.html)
+
 
 ## Disclaimer
 This package and its author are not affiliated with
