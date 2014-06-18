@@ -5,6 +5,7 @@
 \alias{pushover_high}
 \alias{pushover_normal}
 \alias{pushover_quiet}
+\alias{pushover_silent}
 \title{Send a message using Pushover}
 \usage{
 pushover(message, ...)
@@ -24,8 +25,9 @@ return values will not be displayed for non-emergency messages.
 \code{pushover} sends a message (push notification) to a user or group.
 Messages can be given different priorities, play different sounds, or require
 acknowledgments. A unique request token is returned. The
-\code{pushover_normal}, \code{pushover_quiet}, \code{pushover_high}, and
-\code{pushover_emergency} functions send messages with those priorities.
+\code{pushover_normal}, \code{pushover_silent}, \code{pushover_quiet},
+\code{pushover_high}, and \code{pushover_emergency} functions send messages
+with those priorities.
 }
 \note{
 Pushover user/group keys and application tokens are requred for a

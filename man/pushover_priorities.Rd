@@ -3,7 +3,8 @@
 \name{pushover_priorities}
 \alias{pushover_priorities}
 \title{List of the priorities available and their descriptions}
-\format{\preformatted{List of 4
+\format{\preformatted{List of 5
+ $ -2: chr "silent"
  $ -1: chr "quiet"
  $ 0 : chr "normal"
  $ 1 : chr "high"

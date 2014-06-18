@@ -27,7 +27,7 @@ used to build queries that are sent to Pushover's servers.
 
 \item{\code{url_title}}{A title for the given url (optional, max. 100 characters)}
 
-\item{\code{priority}}{The message's priority. One of: -1 (quiet), 0
+\item{\code{priority}}{The message's priority. One of: -2 (silent), -1 (quiet), 0
 (normal, default), 1 (high), 2 (emergency). Quiet messages do not play a
 sound. Emergency messages require acknowledgement.}
 
