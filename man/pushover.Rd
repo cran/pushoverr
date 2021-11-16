@@ -2,17 +2,30 @@
 % Please edit documentation in R/pushover.R
 \name{pushover}
 \alias{pushover}
-\alias{pushover_emergency}
-\alias{pushover_high}
-\alias{pushover_normal}
-\alias{pushover_quiet}
 \alias{pushover_silent}
+\alias{pushover_quiet}
+\alias{pushover_normal}
+\alias{pushover_high}
+\alias{pushover_emergency}
 \title{Send a message using Pushover}
 \usage{
-pushover(message, title = NULL, priority = 0, user = get_pushover_user(),
-  app = get_pushover_app(), device = NULL, sound = NULL, url = NULL,
-  url_title = NULL, retry = 60, expire = 3600, callback = NULL,
-  timestamp = NULL)
+pushover(
+  message,
+  title = NULL,
+  priority = 0,
+  attachment = NULL,
+  user = get_pushover_user(),
+  app = get_pushover_app(),
+  device = NULL,
+  sound = NULL,
+  url = NULL,
+  url_title = NULL,
+  format = c("html", "monospace"),
+  retry = 60,
+  expire = 3600,
+  callback = NULL,
+  timestamp = NULL
+)
 
 pushover_silent(message, ...)
 
@@ -25,54 +38,70 @@ pushover_high(message, ...)
 pushover_emergency(message, ...)
 }
 \arguments{
-\item{message}{The message to be sent (max. 1024 characters)}
+\item{message}{The message to be sent (max. 1024 characters). Messages use
+\code{\link[glue:glue]{glue::glue()}} for formatting and interpolation.}
 
-\item{title}{(optional) The message's title}
+\item{title}{(optional) The message's title. Titles use \code{\link[glue:glue]{glue::glue()}} for
+formatting and interpolation.}
 
-\item{priority}{Message priority (-2: silent, -1: quiet, 0: normal (default), 1: high, 2: emergency)}
+\item{priority}{Message priority (\code{-2}: silent, \code{-1}: quiet, \code{0}: normal
+(default), \code{1}: high, \code{2}: emergency)}
 
-\item{user}{user/group key (see \code{\link{set_pushover_user}})}
+\item{attachment}{Path of file attachment to include. File must be image
+format (bmp, jpg, png, tif) and no larger than 2.6 MB.}
 
-\item{app}{application token (see \code{\link{set_pushover_app}})}
+\item{user}{user/group key (see \code{\link[=set_pushover_user]{set_pushover_user()}})}
 
-\item{device}{(optional) name of the device(s) to send message to. Defaults to all devices.}
+\item{app}{application token (see \code{\link[=set_pushover_app]{set_pushover_app()}})}
 
-\item{sound}{(optional) name of the sound to play (see \url{https://pushover.net/api#sounds})}
+\item{device}{(optional) name of the device(s) to send message to. Defaults
+to all devices.}
+
+\item{sound}{(optional) name of the sound to play (see
+\url{https://pushover.net/api#sounds})}
 
 \item{url}{(optional) supplementary URL to display with message}
 
 \item{url_title}{(optional) title to show for supplementary URL}
 
-\item{retry}{(optional) how often (in seconds) to repeat emergency priority messages (min: 30 seconds; default: 60 seconds)}
+\item{format}{Message formatting. If \code{html} (default), messages can include a
+\href{https://pushover.net/api#html}{limited subset} of HTML formatting. If
+\code{monospace}, text is formatted using monospace font.}
 
-\item{expire}{(optional) how long (in seconds) emergency priority messages will be retried (max: 86400 seconds; default: 3600 seconds)}
+\item{retry}{(optional) how often (in seconds) to repeat emergency priority
+messages (min: 30 seconds; default: 60 seconds)}
 
-\item{callback}{(optional) callback URL to be visited (HTTP POST) once an emergency priority message has been acknowledged (\href{https://pushover.net/api#receipt}{details})}
+\item{expire}{(optional) how long (in seconds) emergency priority messages
+will be retried (max: 86400 seconds; default: 3600 seconds)}
 
-\item{timestamp}{(optional) a Unix timestamp containing the date and time to display to the user instead of the time at which the message was received}
+\item{callback}{(optional) callback URL to be visited (HTTP POST) once an
+emergency priority message has been acknowledged
+(\href{https://pushover.net/api#receipt}{details})}
+
+\item{timestamp}{(optional) a Unix timestamp containing the date and time to
+display to the user instead of the time at which the message was received}
 
 \item{...}{Additional arguments to pass to \code{pushover()}}
 }
 \value{
 an invisible list containing the following fields:
 \itemize{
-    \item \code{status}: request status (1 = success)
-    \item \code{request}: unique request ID
-    \item \code{raw}: the raw \code{\link[httr]{response}} object
-    \item \code{receipt}: a receipt ID (only for emergency priority messages)
-    \item \code{errors}: a list of error messages (only for unsuccessful requests)
+\item \code{status}: request status (1 = success)
+\item \code{request}: unique request ID
+\item \code{raw}: the raw \link[httr:response]{httr::response} object
+\item \code{receipt}: a receipt ID (only for emergency priority messages)
+\item \code{errors}: a list of error messages (only for unsuccessful requests)
 }
 }
 \description{
-\code{pushover} sends a message (push notification) to a user or group.
+\code{pushover()} sends a message (push notification) to a user or group.
 Messages can be given different priorities, play different sounds, or require
-acknowledgments. The \code{pushover_normal}, \code{pushover_silent},
-\code{pushover_quiet}, \code{pushover_high}, and \code{pushover_emergency}
-functions send messages with those priorities.
+acknowledgments.
+\code{pushover_normal()}, \code{pushover_silent}, \code{pushover_quiet}, \code{pushover_high},
+and \code{pushover_emergency} functions send messages with those priorities.
 }
 \examples{
 \dontrun{
 pushover(message = "Hola Mundo!")
 }
 }
-

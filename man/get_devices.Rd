@@ -2,41 +2,47 @@
 % Please edit documentation in R/get_devices.R
 \name{get_devices}
 \alias{get_devices}
-\alias{is.device}
+\alias{is.registered_device}
 \title{Get a list of the user's registered devices}
 \usage{
 get_devices(user = get_pushover_user(), app = get_pushover_app())
 
-is.device(device, user = get_pushover_user(), app = get_pushover_app())
+is.registered_device(
+  device,
+  user = get_pushover_user(),
+  app = get_pushover_app()
+)
 }
 \arguments{
-\item{user}{Pushover user key (see \code{\link{set_pushover_user}})}
+\item{user}{Pushover user key (see \code{\link[=set_pushover_user]{set_pushover_user()}})}
 
-\item{app}{Pushover application token (see \code{\link{set_pushover_app}})}
+\item{app}{Pushover application token (see \code{\link[=set_pushover_app]{set_pushover_app()}})}
 
 \item{device}{The name of a device}
 }
 \value{
-\code{get_devices} returns a list of device names registered by the
+\code{get_devices()} returns a list of device names registered by the
 given user
 
-\code{is.device} returns a logical value for each of the given
-devices that indicates whether (\code{TRUE}) or not (\code{FALSE}) that
-device is registered to the given user.
+\verb{is.registered_ device()} returns a logical value for each of the
+given devices that indicates whether or not that device is registered to the
+given user.
 }
 \description{
-\code{get_devices} queries the Pushover API for a list of the devices that
+\code{get_devices()} queries the Pushover API for a list of the devices that
 have been registered by the given user
 
-\code{is.device} determines whether the given device is
+\code{is.registered_device()} determines whether the given device is
 registered to the given user
 }
 \examples{
 \dontrun{
-get_devices(user = "uQiRzpo4DXghDmr9QzzfQu27cmVRsG", app = "azGDORePK8gMaC0QOYAMyEEuzJnyUi")
+get_devices(
+  user = "uQiRzpo4DXghDmr9QzzfQu27cmVRsG",
+  app = "azGDORePK8gMaC0QOYAMyEEuzJnyUi"
+)
 }
 \dontrun{
-is.device(device = "phone")
+is.registered_device(device = "phone")
 }
 }
-
